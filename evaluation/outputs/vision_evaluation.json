@@ -1,0 +1,75 @@
+{
+  "metrics": {
+    "top1_accuracy": 1.0,
+    "top3_accuracy": 1.0,
+    "n_images": 104
+  },
+  "examples": [
+    {
+      "file": "data/images/gate_00.png",
+      "true": "gate",
+      "pred_top1": "gate",
+      "correct": true,
+      "top3": [
+        "gate",
+        "gate",
+        "gate"
+      ]
+    },
+    {
+      "file": "data/images/gate_01.png",
+      "true": "gate",
+      "pred_top1": "gate",
+      "correct": true,
+      "top3": [
+        "gate",
+        "gate",
+        "gate"
+      ]
+    },
+    {
+      "file": "data/images/gate_02.png",
+      "true": "gate",
+      "pred_top1": "gate",
+      "correct": true,
+      "top3": [
+        "gate",
+        "gate",
+        "gate"
+      ]
+    },
+    {
+      "file": "data/images/gate_03.png",
+      "true": "gate",
+      "pred_top1": "gate",
+      "correct": true,
+      "top3": [
+        "gate",
+        "gate",
+        "gate"
+      ]
+    },
+    {
+      "file": "data/images/gate_04.png",
+      "true": "gate",
+      "pred_top1": "gate",
+      "correct": true,
+      "top3": [
+        "gate",
+        "gate",
+        "gate"
+      ]
+    },
+    {
+      "file": "data/images/gate_05.png",
+      "true": "gate",
+      "pred_top1": "gate",
+      "correct": true,
+      "top3": [
+        "gate",
+        "gate",
+        "gate"
+      ]
+    }
+  ]
+}

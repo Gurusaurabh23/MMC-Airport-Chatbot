@@ -1,0 +1,21 @@
+audio_id,filename,transcript_ground_truth,intent,tts_rate_wpm
+Q025,data/audio/Q025.wav,Is there a lounge close to gate A11?,lounge,189
+Q029,data/audio/Q029.wav,How do I get to the business lounge?,lounge,150
+Q039,data/audio/Q039.wav,Where can I find airport transport?,transport,183
+Q059,data/audio/Q059.wav,Where can I find a quiet room to pray?,prayer_room,154
+Q015,data/audio/Q015.wav,Where is the check-in desk for international flights?,check_in,153
+Q075,data/audio/Q075.wav,Where is the duty free shop?,shopping,152
+Q065,data/audio/Q065.wav,Where is the special assistance desk?,accessibility,162
+Q080,data/audio/Q080.wav,Is there a pharmacy in the airport?,medical,165
+Q032,data/audio/Q032.wav,Where can I get something to eat?,restaurant,188
+Q028,data/audio/Q028.wav,Where is the airport lounge?,lounge,151
+Q082,data/audio/Q082.wav,Where is the first aid point?,medical,179
+Q031,data/audio/Q031.wav,"I'm hungry, where can I find a restaurant?",restaurant,170
+Q018,data/audio/Q018.wav,"I need to check in, where should I go?",check_in,178
+Q011,data/audio/Q011.wav,Where is the baggage claim hall?,baggage_claim,187
+Q026,data/audio/Q026.wav,How do I get to the business lounge?,lounge,162
+Q023,data/audio/Q023.wav,Where is the security checkpoint?,security,183
+Q013,data/audio/Q013.wav,"I need to check in, where should I go?",check_in,164
+Q001,data/audio/Q001.wav,"Excuse me, where can I find gate A05?",find_gate,190
+Q019,data/audio/Q019.wav,Which way to airport security?,security,168
+Q006,data/audio/Q006.wav,Where is gate C07?,find_gate,181

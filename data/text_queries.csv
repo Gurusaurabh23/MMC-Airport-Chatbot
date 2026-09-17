@@ -1,0 +1,85 @@
+id,text,intent,entities,split
+Q049,"I lost an item at the airport, who do I contact?",lost_and_found,{},train
+Q043,Where can I get help with directions?,information_desk,{},train
+Q003,How do I get to gate B12?,find_gate,{'gate': 'B12'},train
+Q024,How do I get through security?,security,{},train
+Q009,How do I get to baggage claim?,baggage_claim,{},train
+Q013,"I need to check in, where should I go?",check_in,{},train
+Q079,Where is the first aid point?,medical,{},train
+Q014,"I need to check in, where should I go?",check_in,{},train
+Q041,Where can I find airport transport?,transport,{},train
+Q070,Is my flight delayed?,flight_status,{},train
+Q004,How do I get to gate A05?,find_gate,{'gate': 'A05'},train
+Q023,Where is the security checkpoint?,security,{},train
+Q031,"I'm hungry, where can I find a restaurant?",restaurant,{},train
+Q002,Where is gate A11?,find_gate,{'gate': 'A11'},train
+Q057,Where can I find a quiet room to pray?,prayer_room,{},train
+Q016,"I need to check in, where should I go?",check_in,{},train
+Q056,Where is the multi-faith prayer room?,prayer_room,{},train
+Q037,How do I get into the city centre from here?,transport,{},train
+Q026,How do I get to the business lounge?,lounge,{},train
+Q045,Who can I ask for general information?,information_desk,{},train
+Q006,Where is gate C07?,find_gate,{'gate': 'C07'},train
+Q054,"I lost an item at the airport, who do I contact?",lost_and_found,{},train
+Q084,"I need medical assistance, where do I go?",medical,{},train
+Q080,Is there a pharmacy in the airport?,medical,{},train
+Q065,Where is the special assistance desk?,accessibility,{},train
+Q074,Where can I buy souvenirs?,shopping,{},train
+Q038,Where can I rent a car?,transport,{},train
+Q027,Where is the airport lounge?,lounge,{},train
+Q010,How do I get to baggage claim?,baggage_claim,{},train
+Q078,Is there a shopping area past security?,shopping,{},train
+Q040,How do I get into the city centre from here?,transport,{},train
+Q067,Is flight EW772 on time?,flight_status,{'flight': 'EW772'},train
+Q046,Where is the nearest information desk?,information_desk,{},train
+Q068,Has my gate changed?,flight_status,{},train
+Q033,Where is the food court?,restaurant,{},train
+Q053,Where do I go to report lost property?,lost_and_found,{},train
+Q063,"I need a wheelchair, where do I go?",accessibility,{},train
+Q076,Where is the duty free shop?,shopping,{},train
+Q011,Where is the baggage claim hall?,baggage_claim,{},train
+Q061,Where is the special assistance desk?,accessibility,{},train
+Q083,Where is the first aid point?,medical,{},train
+Q048,Who can I ask for general information?,information_desk,{},train
+Q022,Where is the security control area?,security,{},train
+Q042,Where can I rent a car?,transport,{},train
+Q071,What is the status of flight LH441?,flight_status,{'flight': 'LH441'},train
+Q035,Where is the food court?,restaurant,{},train
+Q050,"I lost my bag, where do I report it?",lost_and_found,{},train
+Q008,How do I get to baggage claim?,baggage_claim,{},train
+Q073,Where can I buy souvenirs?,shopping,{},train
+Q062,Can someone help me with mobility assistance?,accessibility,{},train
+Q001,"Excuse me, where can I find gate A05?",find_gate,{'gate': 'A05'},train
+Q036,Where can I get something to eat?,restaurant,{},train
+Q017,Where can I check in for my flight?,check_in,{},train
+Q077,Is there a shopping area past security?,shopping,{},train
+Q030,Is there a lounge near Terminal 1?,lounge,{'terminal': 'Terminal 1'},train
+Q060,Where can I find a quiet room to pray?,prayer_room,{},train
+Q058,Is there a prayer room in the airport?,prayer_room,{},train
+Q025,Is there a lounge close to gate A11?,lounge,{'gate': 'A11'},train
+Q005,"Excuse me, where can I find gate C07?",find_gate,{'gate': 'C07'},train
+Q039,Where can I find airport transport?,transport,{},train
+Q028,Where is the airport lounge?,lounge,{},train
+Q044,Where can I get help with directions?,information_desk,{},train
+Q051,Where is the lost and found office?,lost_and_found,{},train
+Q021,Which way to airport security?,security,{},train
+Q020,How do I get through security?,security,{},train
+Q015,Where is the check-in desk for international flights?,check_in,{},train
+Q007,Where do I collect my luggage?,baggage_claim,{},train
+Q012,Where is the baggage claim hall?,baggage_claim,{},val
+Q064,Where is the special assistance desk?,accessibility,{},val
+Q066,Where is the special assistance desk?,accessibility,{},val
+Q081,"I need medical assistance, where do I go?",medical,{},val
+Q029,How do I get to the business lounge?,lounge,{},val
+Q047,Where is the nearest information desk?,information_desk,{},val
+Q052,"I lost my bag, where do I report it?",lost_and_found,{},val
+Q055,Where can I find a quiet room to pray?,prayer_room,{},val
+Q075,Where is the duty free shop?,shopping,{},val
+Q082,Where is the first aid point?,medical,{},val
+Q069,What is the status of flight AF1023?,flight_status,{'flight': 'AF1023'},val
+Q072,Has my gate changed?,flight_status,{},val
+Q032,Where can I get something to eat?,restaurant,{},val
+Q018,"I need to check in, where should I go?",check_in,{},val
+Q034,Where is the food court?,restaurant,{},val
+Q019,Which way to airport security?,security,{},val
+Q059,Where can I find a quiet room to pray?,prayer_room,{},val

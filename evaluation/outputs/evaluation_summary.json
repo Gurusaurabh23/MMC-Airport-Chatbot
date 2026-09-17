@@ -1,0 +1,17 @@
+{
+  "vision": {
+    "top1_accuracy": 1.0,
+    "top3_accuracy": 1.0,
+    "n_images": 104
+  },
+  "speech": {
+    "mean_wer": 0.028749999999999998,
+    "n_samples": 20
+  },
+  "text_retrieval": {
+    "semantic_retrieval_accuracy": 0.8823529411764706,
+    "intent_classifier_accuracy_on_eval_run": 1.0,
+    "n_val_samples": 17
+  },
+  "fusion_scenarios_pass_rate": 1.0
+}

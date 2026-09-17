@@ -1,0 +1,17 @@
+# Fine-tuned model weights — regenerate with src/train_intent_classifier.py
+# (265MB, over GitHub's file size limit; not something you'd hand-edit anyway)
+models/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Generated report exports (keep the .docx, drop scratch PDF/preview renders)
+report/preview/
+report/*.pdf
+
+# OS/editor cruft
+.DS_Store
+Thumbs.db

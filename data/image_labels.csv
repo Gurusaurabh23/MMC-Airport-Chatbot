@@ -1,0 +1,105 @@
+filename,category,label_text
+data/images/gate_00.png,gate,GATE B12
+data/images/gate_01.png,gate,GATE C07
+data/images/gate_02.png,gate,GATE A05
+data/images/gate_03.png,gate,GATE C07
+data/images/gate_04.png,gate,GATE B12
+data/images/gate_05.png,gate,GATE B12
+data/images/gate_06.png,gate,GATE C07
+data/images/gate_07.png,gate,GATE B03
+data/images/baggage_claim_00.png,baggage_claim,BAGGAGE CLAIM
+data/images/baggage_claim_01.png,baggage_claim,BAGGAGE CLAIM
+data/images/baggage_claim_02.png,baggage_claim,BAGGAGE CLAIM
+data/images/baggage_claim_03.png,baggage_claim,BAGGAGE CLAIM
+data/images/baggage_claim_04.png,baggage_claim,BAGGAGE CLAIM
+data/images/baggage_claim_05.png,baggage_claim,BAGGAGE CLAIM
+data/images/baggage_claim_06.png,baggage_claim,BAGGAGE CLAIM
+data/images/baggage_claim_07.png,baggage_claim,BAGGAGE CLAIM
+data/images/check_in_00.png,check_in,CHECK-IN
+data/images/check_in_01.png,check_in,CHECK-IN
+data/images/check_in_02.png,check_in,CHECK-IN
+data/images/check_in_03.png,check_in,CHECK-IN
+data/images/check_in_04.png,check_in,CHECK-IN
+data/images/check_in_05.png,check_in,CHECK-IN
+data/images/check_in_06.png,check_in,CHECK-IN
+data/images/check_in_07.png,check_in,CHECK-IN
+data/images/security_00.png,security,SECURITY
+data/images/security_01.png,security,SECURITY
+data/images/security_02.png,security,SECURITY
+data/images/security_03.png,security,SECURITY
+data/images/security_04.png,security,SECURITY
+data/images/security_05.png,security,SECURITY
+data/images/security_06.png,security,SECURITY
+data/images/security_07.png,security,SECURITY
+data/images/information_desk_00.png,information_desk,INFORMATION
+data/images/information_desk_01.png,information_desk,INFORMATION
+data/images/information_desk_02.png,information_desk,INFORMATION
+data/images/information_desk_03.png,information_desk,INFORMATION
+data/images/information_desk_04.png,information_desk,INFORMATION
+data/images/information_desk_05.png,information_desk,INFORMATION
+data/images/information_desk_06.png,information_desk,INFORMATION
+data/images/information_desk_07.png,information_desk,INFORMATION
+data/images/lost_and_found_00.png,lost_and_found,LOST & FOUND
+data/images/lost_and_found_01.png,lost_and_found,LOST & FOUND
+data/images/lost_and_found_02.png,lost_and_found,LOST & FOUND
+data/images/lost_and_found_03.png,lost_and_found,LOST & FOUND
+data/images/lost_and_found_04.png,lost_and_found,LOST & FOUND
+data/images/lost_and_found_05.png,lost_and_found,LOST & FOUND
+data/images/lost_and_found_06.png,lost_and_found,LOST & FOUND
+data/images/lost_and_found_07.png,lost_and_found,LOST & FOUND
+data/images/lounge_00.png,lounge,LOUNGE
+data/images/lounge_01.png,lounge,LOUNGE
+data/images/lounge_02.png,lounge,LOUNGE
+data/images/lounge_03.png,lounge,LOUNGE
+data/images/lounge_04.png,lounge,LOUNGE
+data/images/lounge_05.png,lounge,LOUNGE
+data/images/lounge_06.png,lounge,LOUNGE
+data/images/lounge_07.png,lounge,LOUNGE
+data/images/restaurant_00.png,restaurant,RESTAURANT
+data/images/restaurant_01.png,restaurant,RESTAURANT
+data/images/restaurant_02.png,restaurant,RESTAURANT
+data/images/restaurant_03.png,restaurant,RESTAURANT
+data/images/restaurant_04.png,restaurant,RESTAURANT
+data/images/restaurant_05.png,restaurant,RESTAURANT
+data/images/restaurant_06.png,restaurant,RESTAURANT
+data/images/restaurant_07.png,restaurant,RESTAURANT
+data/images/transport_00.png,transport,TRANSPORT
+data/images/transport_01.png,transport,TRANSPORT
+data/images/transport_02.png,transport,TRANSPORT
+data/images/transport_03.png,transport,TRANSPORT
+data/images/transport_04.png,transport,TRANSPORT
+data/images/transport_05.png,transport,TRANSPORT
+data/images/transport_06.png,transport,TRANSPORT
+data/images/transport_07.png,transport,TRANSPORT
+data/images/prayer_room_00.png,prayer_room,PRAYER ROOM
+data/images/prayer_room_01.png,prayer_room,PRAYER ROOM
+data/images/prayer_room_02.png,prayer_room,PRAYER ROOM
+data/images/prayer_room_03.png,prayer_room,PRAYER ROOM
+data/images/prayer_room_04.png,prayer_room,PRAYER ROOM
+data/images/prayer_room_05.png,prayer_room,PRAYER ROOM
+data/images/prayer_room_06.png,prayer_room,PRAYER ROOM
+data/images/prayer_room_07.png,prayer_room,PRAYER ROOM
+data/images/accessibility_00.png,accessibility,ASSISTANCE
+data/images/accessibility_01.png,accessibility,ASSISTANCE
+data/images/accessibility_02.png,accessibility,ASSISTANCE
+data/images/accessibility_03.png,accessibility,ASSISTANCE
+data/images/accessibility_04.png,accessibility,ASSISTANCE
+data/images/accessibility_05.png,accessibility,ASSISTANCE
+data/images/accessibility_06.png,accessibility,ASSISTANCE
+data/images/accessibility_07.png,accessibility,ASSISTANCE
+data/images/shopping_00.png,shopping,DUTY FREE
+data/images/shopping_01.png,shopping,DUTY FREE
+data/images/shopping_02.png,shopping,DUTY FREE
+data/images/shopping_03.png,shopping,DUTY FREE
+data/images/shopping_04.png,shopping,DUTY FREE
+data/images/shopping_05.png,shopping,DUTY FREE
+data/images/shopping_06.png,shopping,DUTY FREE
+data/images/shopping_07.png,shopping,DUTY FREE
+data/images/medical_00.png,medical,MEDICAL
+data/images/medical_01.png,medical,MEDICAL
+data/images/medical_02.png,medical,MEDICAL
+data/images/medical_03.png,medical,MEDICAL
+data/images/medical_04.png,medical,MEDICAL
+data/images/medical_05.png,medical,MEDICAL
+data/images/medical_06.png,medical,MEDICAL
+data/images/medical_07.png,medical,MEDICAL

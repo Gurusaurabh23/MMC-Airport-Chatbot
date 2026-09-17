@@ -1,0 +1,5 @@
+{
+  "semantic_retrieval_accuracy": 0.8823529411764706,
+  "intent_classifier_accuracy_on_eval_run": 1.0,
+  "n_val_samples": 17
+}

@@ -1,0 +1,148 @@
+{
+  "metrics": {
+    "mean_wer": 0.028749999999999998,
+    "n_samples": 20
+  },
+  "examples": [
+    {
+      "audio_id": "Q025",
+      "ground_truth": "Is there a lounge close to gate A11?",
+      "transcribed": "Is there a lounge close to gate A11?",
+      "wer": 0.0,
+      "latency_sec": 10.14
+    },
+    {
+      "audio_id": "Q029",
+      "ground_truth": "How do I get to the business lounge?",
+      "transcribed": "How do I get to the business lounge?",
+      "wer": 0.0,
+      "latency_sec": 2.95
+    },
+    {
+      "audio_id": "Q039",
+      "ground_truth": "Where can I find airport transport?",
+      "transcribed": "Where can I find airport transport?",
+      "wer": 0.0,
+      "latency_sec": 2.5
+    },
+    {
+      "audio_id": "Q059",
+      "ground_truth": "Where can I find a quiet room to pray?",
+      "transcribed": "Where can I find a quiet room to pray?",
+      "wer": 0.0,
+      "latency_sec": 2.76
+    },
+    {
+      "audio_id": "Q015",
+      "ground_truth": "Where is the check-in desk for international flights?",
+      "transcribed": "Where is the check in desk for international flights?",
+      "wer": 0.25,
+      "latency_sec": 2.73
+    },
+    {
+      "audio_id": "Q075",
+      "ground_truth": "Where is the duty free shop?",
+      "transcribed": "Where is the duty free shop?",
+      "wer": 0.0,
+      "latency_sec": 2.43
+    },
+    {
+      "audio_id": "Q065",
+      "ground_truth": "Where is the special assistance desk?",
+      "transcribed": "Where is the Special Assistance Desk?",
+      "wer": 0.0,
+      "latency_sec": 2.58
+    },
+    {
+      "audio_id": "Q080",
+      "ground_truth": "Is there a pharmacy in the airport?",
+      "transcribed": "Is there a pharmacy in the airport?",
+      "wer": 0.0,
+      "latency_sec": 2.49
+    },
+    {
+      "audio_id": "Q032",
+      "ground_truth": "Where can I get something to eat?",
+      "transcribed": "Where can I get something to eat?",
+      "wer": 0.0,
+      "latency_sec": 3.05
+    },
+    {
+      "audio_id": "Q028",
+      "ground_truth": "Where is the airport lounge?",
+      "transcribed": "Where is the airport lounge?",
+      "wer": 0.0,
+      "latency_sec": 2.42
+    },
+    {
+      "audio_id": "Q082",
+      "ground_truth": "Where is the first aid point?",
+      "transcribed": "Where is the first aid point?",
+      "wer": 0.0,
+      "latency_sec": 2.86
+    },
+    {
+      "audio_id": "Q031",
+      "ground_truth": "I'm hungry, where can I find a restaurant?",
+      "transcribed": "I'm hungry. Where can I find a restaurant?",
+      "wer": 0.125,
+      "latency_sec": 3.11
+    },
+    {
+      "audio_id": "Q018",
+      "ground_truth": "I need to check in, where should I go?",
+      "transcribed": "I need to check in, where should I go?",
+      "wer": 0.0,
+      "latency_sec": 2.91
+    },
+    {
+      "audio_id": "Q011",
+      "ground_truth": "Where is the baggage claim hall?",
+      "transcribed": "Where is the baggage claim hall?",
+      "wer": 0.0,
+      "latency_sec": 2.43
+    },
+    {
+      "audio_id": "Q026",
+      "ground_truth": "How do I get to the business lounge?",
+      "transcribed": "How do I get to the business lounge?",
+      "wer": 0.0,
+      "latency_sec": 2.63
+    },
+    {
+      "audio_id": "Q023",
+      "ground_truth": "Where is the security checkpoint?",
+      "transcribed": "Where is the security checkpoint?",
+      "wer": 0.0,
+      "latency_sec": 2.31
+    },
+    {
+      "audio_id": "Q013",
+      "ground_truth": "I need to check in, where should I go?",
+      "transcribed": "I need to check in, where should I go?",
+      "wer": 0.0,
+      "latency_sec": 2.7
+    },
+    {
+      "audio_id": "Q001",
+      "ground_truth": "Excuse me, where can I find gate A05?",
+      "transcribed": "Excuse me, where can I find gate A05?",
+      "wer": 0.0,
+      "latency_sec": 2.68
+    },
+    {
+      "audio_id": "Q019",
+      "ground_truth": "Which way to airport security?",
+      "transcribed": "which way to airport security.",
+      "wer": 0.2,
+      "latency_sec": 2.25
+    },
+    {
+      "audio_id": "Q006",
+      "ground_truth": "Where is gate C07?",
+      "transcribed": "Where is gate C07?",
+      "wer": 0.0,
+      "latency_sec": 1.86
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "modality": "text",
+    "input": "Where is gate B12?",
+    "expected": "Gate B12 record",
+    "actual_status": "answered",
+    "actual_record": "Gate B12",
+    "confidence": 0.95,
+    "correct": true
+  },
+  {
+    "modality": "image",
+    "input": "photo of a baggage claim sign",
+    "expected": "Baggage Claim Hall record",
+    "actual_status": "answered",
+    "actual_record": "Baggage Claim Hall",
+    "confidence": 1.0,
+    "correct": true
+  },
+  {
+    "modality": "voice",
+    "input": "Excuse me, where can I find gate A05?",
+    "expected": "Gate-related KB record",
+    "actual_status": "answered",
+    "actual_record": "Gate A05",
+    "confidence": 0.95,
+    "correct": true
+  },
+  {
+    "modality": "image+text",
+    "input": "\"Where is airport security?\" + photo of a security sign",
+    "expected": "Security Control (agreement boost)",
+    "actual_status": "answered",
+    "actual_record": "Security Control - Terminal 1",
+    "confidence": 1.0,
+    "correct": true
+  },
+  {
+    "modality": "text",
+    "input": "Is my flight delayed?",
+    "expected": "Disclaimer to check live flight boards",
+    "actual_status": "flight_status_disclaimer",
+    "actual_record": null,
+    "confidence": 0.755,
+    "correct": true
+  }
+]
