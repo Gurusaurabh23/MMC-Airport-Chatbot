@@ -1,0 +1,82 @@
+[
+  {
+    "raw_text": "How do I get to gate B12?",
+    "clean_text": "how do i get to gate b12?",
+    "tokens": [
+      "how",
+      "do",
+      "i",
+      "get",
+      "to",
+      "gate",
+      "b12?"
+    ],
+    "entities": {
+      "gate": "B12"
+    },
+    "intent_label": "find_gate"
+  },
+  {
+    "raw_text": "Is flight EW772 on time?",
+    "clean_text": "is flight ew772 on time?",
+    "tokens": [
+      "is",
+      "flight",
+      "ew772",
+      "on",
+      "time?"
+    ],
+    "entities": {
+      "flight": "EW772"
+    },
+    "intent_label": "flight_status"
+  },
+  {
+    "raw_text": "Is there a lounge near Terminal 1?",
+    "clean_text": "is there a lounge near terminal 1?",
+    "tokens": [
+      "is",
+      "there",
+      "a",
+      "lounge",
+      "near",
+      "terminal",
+      "1?"
+    ],
+    "entities": {
+      "terminal": "Terminal 1"
+    },
+    "intent_label": "lounge"
+  },
+  {
+    "raw_text": "How do I get to gate A05?",
+    "clean_text": "how do i get to gate a05?",
+    "tokens": [
+      "how",
+      "do",
+      "i",
+      "get",
+      "to",
+      "gate",
+      "a05?"
+    ],
+    "entities": {
+      "gate": "A05"
+    },
+    "intent_label": "find_gate"
+  },
+  {
+    "raw_text": "Where is gate A11?",
+    "clean_text": "where is gate a11?",
+    "tokens": [
+      "where",
+      "is",
+      "gate",
+      "a11?"
+    ],
+    "entities": {
+      "gate": "A11"
+    },
+    "intent_label": "find_gate"
+  }
+]

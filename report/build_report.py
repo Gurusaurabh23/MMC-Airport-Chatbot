@@ -16,6 +16,8 @@ from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.shared import Pt, Inches, RGBColor
 from docx.enum.table import WD_TABLE_ALIGNMENT
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -25,7 +27,7 @@ OUT_PATH = Path(__file__).resolve().parent / "MMC_Assignment_Report.docx"
 
 HEADING_COLOR = RGBColor(0x1A, 0x36, 0x5D)
 
-STUDENT_NAME = "Saurabh Guru"
+STUDENT_NAME = "Saurabh Gawarguru"
 SUBMISSION_DATE = "17/09/2026"
 GITHUB_URL = "https://github.com/Gurusaurabh23/MMC-Airport-Chatbot"
 STREAMLIT_URL = None  # set once deployed; falls back to local run instructions
@@ -114,6 +116,89 @@ def add_table(doc, headers, rows, widths=None):
     return table
 
 
+def apply_document_style(doc):
+    """Consistent body/heading fonts and sizes across the whole report,
+    rather than relying on python-docx's plain Word defaults."""
+    normal = doc.styles["Normal"]
+    normal.font.name = "Calibri"
+    normal.font.size = Pt(11)
+    normal.paragraph_format.space_after = Pt(8)
+    normal.paragraph_format.line_spacing = 1.15
+
+    heading_sizes = {"Heading 1": 16, "Heading 2": 13, "Heading 3": 12}
+    for name, size in heading_sizes.items():
+        style = doc.styles[name]
+        style.font.name = "Calibri"
+        style.font.size = Pt(size)
+        style.font.color.rgb = HEADING_COLOR
+        style.font.bold = True
+        style.paragraph_format.space_before = Pt(18)
+        style.paragraph_format.space_after = Pt(6)
+
+    title_style = doc.styles["Title"]
+    title_style.font.name = "Calibri"
+    title_style.font.size = Pt(26)
+    title_style.font.color.rgb = HEADING_COLOR
+
+
+def add_page_numbers(doc):
+    """Centered 'Page X of Y' footer, via Word field codes (python-docx has
+    no native page-number API)."""
+    section = doc.sections[0]
+    footer = section.footer
+    p = footer.paragraphs[0] if footer.paragraphs else footer.add_paragraph()
+    p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p.text = ""
+
+    def add_field(paragraph, field_code):
+        run = paragraph.add_run()
+        fld_begin = OxmlElement("w:fldChar")
+        fld_begin.set(qn("w:fldCharType"), "begin")
+        instr = OxmlElement("w:instrText")
+        instr.set(qn("xml:space"), "preserve")
+        instr.text = field_code
+        fld_sep = OxmlElement("w:fldChar")
+        fld_sep.set(qn("w:fldCharType"), "separate")
+        fld_end = OxmlElement("w:fldChar")
+        fld_end.set(qn("w:fldCharType"), "end")
+        run._r.append(fld_begin)
+        run._r.append(instr)
+        run._r.append(fld_sep)
+        run._r.append(fld_end)
+
+    p.add_run("Page ")
+    add_field(p, "PAGE")
+    p.add_run(" of ")
+    add_field(p, "NUMPAGES")
+
+
+def add_table_of_contents(doc):
+    """Inserts a real Word TOC field. Word populates the page numbers
+    automatically on open (or via right-click -> Update Field), which is
+    the only reliable way to get correct page numbers without rendering
+    the whole document first."""
+    add_heading(doc, "Table of Contents", level=1)
+    paragraph = doc.add_paragraph()
+    run = paragraph.add_run()
+    fld_begin = OxmlElement("w:fldChar")
+    fld_begin.set(qn("w:fldCharType"), "begin")
+    instr = OxmlElement("w:instrText")
+    instr.set(qn("xml:space"), "preserve")
+    instr.text = 'TOC \\o "1-2" \\h \\z \\u'
+    fld_sep = OxmlElement("w:fldChar")
+    fld_sep.set(qn("w:fldCharType"), "separate")
+    placeholder = OxmlElement("w:t")
+    placeholder.text = "Right-click here and choose \"Update Field\" to generate the table of contents."
+    fld_end = OxmlElement("w:fldChar")
+    fld_end.set(qn("w:fldCharType"), "end")
+    run._r.append(fld_begin)
+    run._r.append(instr)
+    run._r.append(fld_sep)
+    run._r.append(placeholder)
+    run._r.append(fld_end)
+    doc.add_page_break()
+
+
 def main():
     vision = load_json("vision_evaluation.json")
     speech = load_json("speech_evaluation.json")
@@ -123,6 +208,8 @@ def main():
         if (ROOT / "evaluation" / "outputs" / "intent_training_history.json").exists() else None
 
     doc = Document()
+    apply_document_style(doc)
+    add_page_numbers(doc)
 
     # ---------- Title page ----------
     title = doc.add_heading("Developing a Smart Airport Passenger Assistance Multimodal Chatbot", level=0)
@@ -177,6 +264,8 @@ def main():
             size=11)
     doc.add_page_break()
 
+    add_table_of_contents(doc)
+
     # ---------- 1. Introduction ----------
     add_heading(doc, "1. Introduction", level=1)
     add_para(doc,
@@ -204,6 +293,7 @@ def main():
     )
 
     # ---------- 2. Problem Statement recap ----------
+    doc.add_page_break()
     add_heading(doc, "2. Problem Statement", level=1)
     add_para(doc,
         "The chatbot must process three input modalities — images of airport signage, spoken "
@@ -216,6 +306,7 @@ def main():
     )
 
     # ---------- 3. Environment Setup ----------
+    doc.add_page_break()
     add_heading(doc, "3. Environment Setup (10%)", level=1)
     add_para(doc,
         "The project was developed in Python 3.10 on a CPU-only environment (no GPU dependency, "
@@ -239,6 +330,7 @@ def main():
     )
 
     # ---------- 4. Data Acquisition & Exploration ----------
+    doc.add_page_break()
     add_heading(doc, "4. Data Acquisition and Exploration (15%)", level=1)
     add_heading(doc, "4.1 Visual Data", level=2)
     add_para(doc,
@@ -259,18 +351,25 @@ def main():
     )
     add_image(doc, fig1, width=4.4,
                caption="Figure 1. Two representative synthetic sign mockups: 'Gate' and 'Accessibility' categories.")
+    add_image(doc, PLOTS_DIR / "image_class_distribution.png", width=5.8,
+               caption="Figure 1b. Class distribution across the 13 visual categories.")
     add_para(doc,
         "Class distribution is even by construction (8 images per category, 104 total), which was "
         "a deliberate choice to isolate model-quality questions from class-imbalance effects at "
         "this small scale; a genuine deployment would need to handle imbalance (e.g. many more gate "
-        "signs than prayer-room signs) and this is discussed as a limitation below. Visual "
-        "inspection across categories shows signs are easily distinguishable by colour and "
-        "pictogram shape but that 'lounge' and 'restaurant' pictograms (furniture vs. cutlery "
+        "signs than prayer-room signs) and this is discussed as a limitation below."
+    )
+    add_image(doc, PLOTS_DIR / "visual_similarity_comparison.png", width=4.6,
+               caption="Figure 1c. Visual similarity comparison: 'lounge' vs 'restaurant' (most similar pictograms, by colour and shape) against 'gate' vs 'security' (clearly dissimilar).")
+    add_para(doc,
+        "Visual inspection across categories shows signs are easily distinguishable by colour and "
+        "pictogram shape, but that 'lounge' and 'restaurant' pictograms (furniture vs. cutlery "
         "silhouettes) are the most visually similar pair, which is reflected later in the vision "
-        "confusion analysis. The main limitation of this dataset is that it is synthetic: real "
-        "airport signage varies far more in typography, wear, lighting and partial occlusion than "
-        "these clean mockups, so absolute accuracy figures should be read as an upper bound relative "
-        "to a deployed system using real photographs."
+        "confusion analysis, whereas a pair like 'gate' and 'security' differ in both background "
+        "colour and pictogram shape and are never confused. The main limitation of this dataset is "
+        "that it is synthetic: real airport signage varies far more in typography, wear, lighting "
+        "and partial occlusion than these clean mockups, so absolute accuracy figures should be "
+        "read as an upper bound relative to a deployed system using real photographs."
     )
 
     add_heading(doc, "4.2 Voice and Text Data", level=2)
@@ -288,6 +387,23 @@ def main():
         "background noise and accent variation of real airport recordings, so Whisper's measured "
         "error rate below likely understates real-world error."
     )
+    add_image(doc, PLOTS_DIR / "text_intent_distribution.png", width=5.8,
+               caption="Figure 1d. Intent distribution across the 84-query text/voice dataset.")
+
+    text_exploration = load_json("text_exploration.json")
+    vocab_stats = load_json("text_vocab_stats.json")
+    if vocab_stats:
+        add_para(doc,
+            f"Across all {vocab_stats['n_queries']} queries the vocabulary is {vocab_stats['vocab_size']} "
+            "unique tokens (lowercased, punctuation retained) — small enough that a subword tokeniser "
+            "adds little beyond what DistilBERT's own WordPiece tokenizer already provides downstream. "
+            "Table 1 below shows five worked examples of the full text pipeline (Section 5) end to end: "
+            "the raw query, the cleaned/tokenised form, and the entities the regex extractor pulls out."
+        )
+    if text_exploration:
+        rows = [[e["raw_text"], " ".join(e["tokens"]), json.dumps(e["entities"]) if e["entities"] else "-", e["intent_label"]]
+                for e in text_exploration]
+        add_table(doc, ["Raw query", "Tokens (after cleaning)", "Extracted entities", "Intent label"], rows)
 
     add_heading(doc, "4.3 Airport Knowledge Base", level=2)
     add_para(doc,
@@ -305,6 +421,7 @@ def main():
     )
 
     # ---------- 5. Preprocessing ----------
+    doc.add_page_break()
     add_heading(doc, "5. Preprocessing (10%)", level=1)
     add_para(doc,
         "Image pipeline (src/vision_pipeline.py): images are loaded with Pillow, converted to RGB, "
@@ -313,6 +430,8 @@ def main():
         "jitter) is applied at data-generation time, not at load time — the dataset is "
         "small and static, not streamed in mini-batches for iterative training."
     )
+    add_image(doc, PLOTS_DIR / "preprocessing_sample_output.png", width=6.2,
+               caption="Figure 3b. Image preprocessing pipeline applied to a sample sign: original -> resized to CLIP's 224x224 input -> CLIP-normalised tensor (mean/std per channel; shown un-normalised back to [0,1] for display). Tensor shape (3, 224, 224), dtype float32.")
     add_para(doc,
         "Audio pipeline (src/speech_pipeline.py): WAV files are loaded and resampled to 16kHz mono "
         "with Librosa, matching Whisper's expected sample rate, then passed directly as a float32 "
@@ -334,6 +453,7 @@ def main():
     )
 
     # ---------- 6. Model Design ----------
+    doc.add_page_break()
     add_heading(doc, "6. Model Design (15%)", level=1)
     add_heading(doc, "6.1 Vision Model", level=2)
     add_para(doc,
@@ -379,6 +499,7 @@ def main():
                caption="Figure 2. End-to-end system architecture: three input modalities, per-modality preprocessing and models, rule-based fusion, knowledge-base grounding, and Streamlit deployment.")
 
     # ---------- 7. Training & Evaluation ----------
+    doc.add_page_break()
     add_heading(doc, "7. Training and Evaluation (20%)", level=1)
     add_para(doc,
         "Per the brief, CLIP and Whisper were used frozen and required no training. The optional "
@@ -474,6 +595,7 @@ def main():
     )
 
     # ---------- 8. Deployment and User Testing ----------
+    doc.add_page_break()
     add_heading(doc, "8. Deployment and User Testing (15%)", level=1)
     add_para(doc,
         "The prototype is deployed as a Streamlit application (app.py) rather than Flask, since "
@@ -507,6 +629,7 @@ def main():
     )
 
     # ---------- 9. Ethical & Regulatory Considerations ----------
+    doc.add_page_break()
     add_heading(doc, "9. Ethical and Regulatory Considerations (15%)", level=1)
     add_para(doc,
         "Data privacy. A deployed version of this system would process three categories of "
@@ -581,6 +704,7 @@ def main():
     )
 
     # ---------- 10. Conclusion ----------
+    doc.add_page_break()
     add_heading(doc, "10. Conclusion", level=1)
     add_para(doc,
         "This project implemented and evaluated a complete multimodal AI pipeline for airport "
