@@ -1,7 +1,7 @@
 # Smart Airport Passenger Assistance Multimodal Chatbot
 
 Proof-of-concept multimodal chatbot for the MSc AI *Multi-Modal Chatbots* set
-exercise (BSBI / UCA). Combines a frozen CLIP vision model, a fine-tuned
+exercise. Combines a frozen CLIP vision model, a fine-tuned
 DistilBERT intent classifier, a frozen Whisper speech-to-text model, and a
 structured airport knowledge base behind a rule-based multimodal fusion
 layer, deployed as a Streamlit app.

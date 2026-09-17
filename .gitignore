@@ -8,9 +8,9 @@ __pycache__/
 .venv/
 venv/
 
-# Generated report exports (keep the .docx, drop scratch PDF/preview renders)
-report/preview/
-report/*.pdf
+# The submitted report (including the AI-use declaration) stays local only,
+# not on the public repo.
+report/
 
 # OS/editor cruft
 .DS_Store
