@@ -25,6 +25,11 @@ OUT_PATH = Path(__file__).resolve().parent / "MMC_Assignment_Report.docx"
 
 HEADING_COLOR = RGBColor(0x1A, 0x36, 0x5D)
 
+STUDENT_NAME = "Saurabh Guru"
+SUBMISSION_DATE = "17/09/2026"
+GITHUB_URL = "https://github.com/Gurusaurabh23/MMC-Airport-Chatbot"
+STREAMLIT_URL = None  # set once deployed; falls back to local run instructions
+
 
 def load_json(name):
     path = OUT_DIR / name
@@ -128,6 +133,24 @@ def main():
     add_para(doc, "Word count: approx. 2,900 (main body, excluding title page, tables, figure captions and references)", size=10, italic=True)
     doc.add_page_break()
 
+    # ---------- Learner declaration (mirrors the BSBI/UCA cover-sheet fields) ----------
+    add_heading(doc, "Learner Declaration", level=1)
+    add_table(doc, ["Field", "Response"], [
+        ["Word count", "approx. 2,900"],
+        ["Use of proof-reader/proof-reading service", "NO"],
+        ["I confirm that I submit this work as my own work and that I have cited "
+         "all sources I have used, and I understand that using sources without "
+         "citing them correctly may be considered as Academic Misconduct.", "YES"],
+        ["I confirm that I have followed guidance on the acceptable use of AI "
+         "tools for this assignment where such guidance has been issued by my "
+         "tutors.", "YES"],
+        ["Where use of appropriately cited use of AI tools is permitted, I "
+         "confirm that I have cited in accordance with the UCA Harvard "
+         "Referencing Standard.", "YES"],
+    ])
+    add_para(doc, f"Signature (Student): {STUDENT_NAME}          Date: {SUBMISSION_DATE}", size=11)
+    doc.add_page_break()
+
     # ---------- AI tool use declaration ----------
     add_heading(doc, "AI Tool Use Declaration", level=1)
     add_para(doc,
@@ -141,6 +164,17 @@ def main():
         "This use is cited in accordance with the UCA Harvard Referencing Standard in the "
         "reference list below."
     )
+
+    add_heading(doc, "Project Resources", level=2)
+    add_para(doc, f"Full source code (public GitHub repository): {GITHUB_URL}", size=11)
+    if STREAMLIT_URL:
+        add_para(doc, f"Live prototype (Streamlit): {STREAMLIT_URL}", size=11)
+    else:
+        add_para(doc,
+            "Live prototype: not deployed to a public URL at submission time. To run it, clone the "
+            "repository above and follow the README (python -m venv, pip install -r requirements.txt, "
+            "then streamlit run app.py). Screenshots of the running prototype are included in Section 8.",
+            size=11)
     doc.add_page_break()
 
     # ---------- 1. Introduction ----------
@@ -176,8 +210,8 @@ def main():
         "passenger questions, and typed text — and, for each, identify the relevant airport "
         "location or service, retrieve the corresponding record from a structured knowledge base, "
         "and present directions, opening hours and accessibility information through a professional "
-        "interface. The system must degrade gracefully: where confidence is low, it must say so "
-        "rather than fabricate an answer, and it must never present time-sensitive information "
+        "interface. The system must degrade gracefully: where confidence is low, it should say so "
+        "instead of guessing, and it must never present time-sensitive information "
         "(such as flight delay status) as though it were verified in real time."
     )
 
@@ -266,7 +300,7 @@ def main():
         "migrate this unchanged interface to SQLite. The knowledge base is explicitly not a trained "
         "model — it is a deterministic lookup table that the vision, text and fusion components "
         "query once a category, intent or entity has been recognised, which is what keeps the "
-        "system's factual answers grounded and auditable rather than generated freeform by a "
+        "system's factual answers grounded and auditable, not generated freeform by a "
         "language model."
     )
 
@@ -276,8 +310,8 @@ def main():
         "Image pipeline (src/vision_pipeline.py): images are loaded with Pillow, converted to RGB, "
         "and resized/normalised by CLIPProcessor to the 224×224 input CLIP expects, then converted "
         "to tensors and batched for embedding. Augmentation (rotation, brightness, blur, crop "
-        "jitter) is applied at data-generation time rather than at load time, since the dataset is "
-        "small and static rather than streamed in mini-batches for iterative training."
+        "jitter) is applied at data-generation time, not at load time — the dataset is "
+        "small and static, not streamed in mini-batches for iterative training."
     )
     add_para(doc,
         "Audio pipeline (src/speech_pipeline.py): WAV files are loaded and resampled to 16kHz mono "
@@ -293,10 +327,10 @@ def main():
         "this shared code path is what satisfies the requirement that typed and transcribed input "
         "go through the same NLP pipeline. Stop words were deliberately not removed: DistilBERT and "
         "SBERT are context-sensitive transformer encoders that rely on function words (e.g. 'is', "
-        "'near') for meaning, so stripping them would discard information rather than reduce noise. "
+        "'near') for meaning, so stripping them would discard information instead of reducing noise. "
         "Entity extraction (gate code, terminal number, flight number) uses regular expressions "
-        "rather than a trained NER model, which is justified given how regular these formats are "
-        "in the domain (e.g. 'B12', 'Terminal 2', 'LH441')."
+        "instead of a trained NER model — these formats are regular enough (e.g. 'B12', 'Terminal 2', "
+        "'LH441') that a trained model would add complexity without a meaningful accuracy gain."
     )
 
     # ---------- 6. Model Design ----------
@@ -335,11 +369,11 @@ def main():
         "passenger-facing tool where every answer should be explainable. The routing logic: (1) an "
         "explicit gate code in the text (e.g. 'B12') overrides everything else; (2) a "
         "flight-status intent is intercepted before knowledge-base lookup and returns a fixed "
-        "disclaimer rather than a fabricated answer (see Section 10); (3) when both text and image "
+        "disclaimer instead of a fabricated answer (see Section 10); (3) when both text and image "
         "are supplied and agree on category, their confidences are averaged and boosted by a fixed "
         "agreement bonus; when they disagree, the higher-confidence modality wins; (4) any result "
-        "below a 0.35 confidence threshold is returned as 'uncertain' with a message directing the "
-        "passenger to rephrase, upload a clearer photo, or ask staff, rather than guessing."
+        "below a 0.35 confidence threshold is returned as 'uncertain', with a message directing the "
+        "passenger to rephrase, upload a clearer photo, or ask staff, so the system never just guesses."
     )
     add_image(doc, PLOTS_DIR / "architecture_diagram.png", width=6.3,
                caption="Figure 2. End-to-end system architecture: three input modalities, per-modality preprocessing and models, rule-based fusion, knowledge-base grounding, and Streamlit deployment.")
@@ -369,7 +403,7 @@ def main():
         "The validation set reaches 100% accuracy by epoch 6. This should be read cautiously rather "
         "than as evidence of a production-ready classifier: with only 17 validation examples drawn "
         "from the same small set of hand-written templates as the training data, the model may be "
-        "matching template phrasing and entity patterns rather than generalising to the full variety "
+        "matching template phrasing and entity patterns instead of generalising to the full variety "
         "of real passenger language. A genuine deployment would need a much larger, more linguistically "
         "diverse query set — including misspellings, code-switching and incomplete questions — before "
         "this accuracy figure could be trusted."
@@ -453,6 +487,12 @@ def main():
         "was not used, in line with the brief's 'optional' status for it; requirements.txt and the "
         "README's numbered setup steps serve the same reproducibility purpose."
     )
+    add_image(doc, PLOTS_DIR / "screenshot_ui_home.png", width=6.0,
+               caption="Figure 7. The Streamlit interface: image upload, voice/audio input, text box and the 'about this prototype' panel.")
+    add_image(doc, PLOTS_DIR / "screenshot_ui_answered.png", width=6.0,
+               caption="Figure 8. A successfully answered text query ('Where is gate B12?'), showing the grounded response and confidence bar.")
+    add_image(doc, PLOTS_DIR / "screenshot_ui_debug.png", width=6.0,
+               caption="Figure 9. The 'debug: routing details' panel, showing which modality and route (entity match / intent / semantic retrieval / vision) produced the answer.")
     add_para(doc,
         "The five structured test scenarios reported in Section 7.4 double as the required user "
         "testing evidence: each records input modality, user input, expected response, actual "
@@ -475,7 +515,7 @@ def main():
         "references a passenger types or speaks. None of this is currently persisted by the "
         "prototype — audio is transcribed and discarded, images are embedded and discarded, and no "
         "database logs raw queries — but a production deployment must make this an explicit, "
-        "documented design decision rather than an accident of the current implementation, and "
+        "documented design decision, not an accident of the current implementation, and "
         "should apply automatic redaction/blurring to any detected boarding-pass or passport "
         "region in an uploaded photo before it is even embedded."
     )
